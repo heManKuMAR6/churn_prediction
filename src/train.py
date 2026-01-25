@@ -1,7 +1,10 @@
+
 import pandas as pd
 import numpy as np
 import joblib
 import os
+os.makedirs("models", exist_ok=True)
+
 from datetime import datetime
 
 from sklearn.model_selection import train_test_split
