@@ -1,4 +1,3 @@
-import glob
 import os
 import joblib
 from fastapi import FastAPI
@@ -6,14 +5,12 @@ import numpy as np
 
 app = FastAPI()
 
-def get_latest_file(pattern):
-    files = glob.glob(pattern)
-    return max(files, key=os.path.getctime)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-model_path = get_latest_file("models/churn_model_*.pkl")
-scaler_path = get_latest_file("models/scaler_*.pkl")
+model_path = os.path.join(BASE_DIR, "models", "churn_model.pkl")
+scaler_path = os.path.join(BASE_DIR, "models", "scaler.pkl")
 
-print(f"Loading model: {model_path}")
+print(f"Loading demo model from: {model_path}")
 
 model = joblib.load(model_path)
 scaler = joblib.load(scaler_path)
