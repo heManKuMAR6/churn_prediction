@@ -15,8 +15,12 @@ from imblearn.over_sampling import SMOTE
 
 
 # 1. Load raw data
-url = "https://raw.githubusercontent.com/heManKuMAR6/churn_prediction/main/sample_data/Churn_Modelling.csv"
-df = pd.read_csv(url)
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+data_path = os.path.join(BASE_DIR, "sample_data", "Churn_Modelling.csv")
+
+df = pd.read_csv(data_path)
+
 
 # 2. Drop useless columns
 df = df.drop(['RowNumber', 'CustomerId', 'Surname'], axis=1)
